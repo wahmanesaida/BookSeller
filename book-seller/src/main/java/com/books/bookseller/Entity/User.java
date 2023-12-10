@@ -22,11 +22,11 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+@Entity
 @Data
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
+@Builder(builderMethodName = "userBuilder")
 @Table(name="_user")
 public class User implements UserDetails {
     @Id
@@ -63,6 +63,9 @@ public class User implements UserDetails {
     @Override
     public boolean isEnabled() {
         return true;
+    }
+    public static Object builder() {
+        return null;
     }
 
     
