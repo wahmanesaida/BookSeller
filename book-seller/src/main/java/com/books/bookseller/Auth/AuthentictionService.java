@@ -18,7 +18,7 @@ public class AuthentictionService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
     private final JwtService jwtService;
-    private AuthenticationManager authenticationManager;
+    private final AuthenticationManager authenticationManager;
 
     // this method allow us to create user save it to the database and return the token
     public AuthenticationResponse register(RegisterRequest request){
@@ -26,6 +26,7 @@ public class AuthentictionService {
             .username(request.getUsername())
             .name(request.getName())
             .password(passwordEncoder.encode(request.getPassword()))
+           
             .role(Role.USER)
             .build();
         userRepository.save(user);
